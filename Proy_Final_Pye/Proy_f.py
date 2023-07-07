@@ -43,63 +43,111 @@ plt.show()
 
 
 #Parte 2 a)
-# Cambiamos la data a un formato que se pueda graficar (lista)
-for i in range(0,Rangos.__len__()):
+
+# Gráficamos el histograma por rangos de edad
+# for i in range(0,Rangos.__len__()):
+
+#     salaries_by_age = df[(df['Salario'] != 0) & (df['Edad'] >= Rangos[i]) ]
+
+#     if i < Rangos.__len__() - 1:
+#         salaries_by_age = salaries_by_age[salaries_by_age['Edad'] < Rangos[i+1]]
     
-    df = df[ (df['Edad'] >= Rangos[i] )]
-
-    if i < Rangos.__len__() - 1:
-        df = df[df['Edad'] < Rangos[i+1]]
-
-    salaries = df[df['Salario'] != 0]
+#     salaries_list = salaries_by_age['Salario'].tolist()
     
-    salaries_list = salaries['Salario'].tolist()
-    
-    # Create the histogram
-    plt.hist(salaries_list)
+#     # Create the histogram
+#     plt.hist(salaries_list)
 
-    # Add labels and title
-    plt.xlabel('Salary Upper')
-    plt.ylabel('Frequency')
-    plt.title('Salary Histogram')
+#     # Add labels and title
+#     if i == Rangos.__len__() - 1: 
+#         plt.title(f"Salary Histogram for ages {Rangos[i]} +")
+#     else:
+#         plt.title(f"Salary Histogram for ages {Rangos[i]} - {Rangos[i+1] - 1}")
 
-    # Display the histogram
-    plt.show()
+#     plt.xlabel("Salary")
+#     plt.ylabel('Frequency')
 
-    # HACER BOXPLOT
-    plt.boxplot(salaries_list)
-    
-    # show plot
-    plt.show()
+#     # Display the histogram
+#     plt.show()
 
-    # Mediana
-    print(f"Mediana: {salaries['Salario'].median()}")
+#     # HACER BOXPLOT
+#     plt.boxplot(salaries_list)
+#     # Add labels and title
+#     if i == Rangos.__len__() - 1: 
+#         plt.title(f"BoxPlot for ages {Rangos[i]} +")
+#     else:
+#         plt.title(f"BoxPlot for ages {Rangos[i]} - {Rangos[i+1] - 1}")
+#     # show plot
+#     plt.show()
 
-    # Media
-    print(f"Media: {salaries['Salario'].mean()}")
+salaries_range1 = df[(df['Salario'] != 0) & (df['Salario'] <= 50000)]
+salaries_range2 = df[(df['Salario'] != 0) & (df['Salario'] > 50000) & (df['Salario'] <= 100000)]
+salaries_range3 = df[(df['Salario'] != 0) & (df['Salario'] > 10000) & (df['Salario'] <= 150000)]
+salaries_range4 = df[(df['Salario'] != 0) & (df['Salario'] > 150000)]
 
-    # Moda  
-    print(f"Moda: {salaries['Salario'].mode()}")
+# Create the histogram
+plt.hist(salaries_range1)
 
-    # Minimo
-    print(f"Minimo: {salaries['Salario'].min()}")
-
-    # Maximo
-    print(f"Maximo: {salaries['Salario'].max()}")
-
-    # Cuartiles
-    print(f"Cuartiles: {salaries['Salario'].quantile([0.25,0.5,0.75])}")
-
-
-
-
-
-
-salario_femenino = salaries[salaries['Sexo'] == 2]
-
-salario_masculino = salaries[salaries['Sexo'] == 1]
-
-plt.boxplot([salary < 500000 for salary in salario_femenino['Salario'].tolist()], whis=350)
-# whis = 350
+plt.title(f"Salary Histogram for ages {salaries_range1} +")
+plt.xlabel("Salary")
+plt.ylabel('Frequency')
 
 plt.show()
+
+plt.hist(salaries_range2)
+
+plt.title(f"Salary Histogram for ages {salaries_range2} +")
+plt.xlabel("Salary")
+plt.ylabel('Frequency')
+
+plt.show()
+
+plt.hist(salaries_range3)
+
+plt.title(f"Salary Histogram for ages {salaries_range3} +")
+plt.xlabel("Salary")
+plt.ylabel('Frequency')
+
+plt.show()
+
+plt.hist(salaries_range4)
+
+plt.title(f"Salary Histogram for ages {salaries_range4} +")
+plt.xlabel("Salary")
+plt.ylabel('Frequency')
+
+plt.show()
+
+
+
+# # # Mediana
+# # print(f"Mediana: {salaries_by_age['Salario'].median()}")
+
+# # # Media
+# # print(f"Media: {salaries_by_age['Salario'].mean()}")
+
+# # # Moda  
+# # print(f"Moda: {salaries_by_age['Salario'].mode()}")
+
+# # # Minimo
+# # print(f"Minimo: {salaries_by_age['Salario'].min()}")
+
+# # # Maximo
+# # print(f"Maximo: {salaries_by_age['Salario'].max()}")
+
+# # # Cuartiles
+# # print(f"Cuartiles: {salaries_by_age['Salario'].quantile([0.25,0.5,0.75])}")
+
+
+
+
+
+
+
+# salario_femenino = salaries[salaries['Sexo'] == 2]
+
+# salario_masculino = salaries[salaries['Sexo'] == 1]
+
+# plt.boxplot([salary < 500000 for salary in salario_femenino['Salario'].tolist()], whis=350)
+# # whis = 350
+
+# plt.show()
