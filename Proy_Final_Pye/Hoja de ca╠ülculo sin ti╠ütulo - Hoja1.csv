@@ -1,0 +1,10 @@
+Variable,Descripción,Respuestas
+ID,Id persona,
+anio,Año de la encuesta,2022
+mes,Mes de la encuesta,1-12
+Sexo,Sexo,1= Hombre; 2= Mujer
+Edad,Edad,>=14
+region,región de residencia,"1=Montevideo; 2=Interior, localidades de 5000 habitantes o más; 3=Interior, localidades de menos de 5000 habitantes y zona rural"
+PEA,Forma parte de la PEA,1= si; 0=no
+Desempleo,Está desempleado,1= si; 0=no
+Salario,Salario en pesos uruguayos,
