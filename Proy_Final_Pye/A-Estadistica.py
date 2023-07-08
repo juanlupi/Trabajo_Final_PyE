@@ -43,7 +43,7 @@ plt.show()
 
 #############################################################################################################
 #Parte 2 a)
-#Seteamos un limite de $250000 en el monto del salario para que los datos sean mas legible
+#Seteamos un limite de $150000 en el monto del salario para que los datos sean mas legible
 Corte = 150000
 salaries = df[(df['Salario'] != 0) & (df['Salario'] < Corte)]
 
@@ -73,29 +73,30 @@ plt.show()
 
 #############################################################################################################
 # c)
+salaries_all = df[(df['Salario'] != 0)]
 # Mediana
-print(f"Mediana: {salaries['Salario'].median()}")
+print(f"Mediana: {salaries_all['Salario'].median()}")
 
 # Media
-print(f"Media: {salaries['Salario'].mean()}")
+print(f"Media: {salaries_all['Salario'].mean()}")
 
 # Moda  
-print(f"Moda: {salaries['Salario'].mode()}")
+print(f"Moda: {salaries_all['Salario'].mode()}")
 
 ##############################################################################################################  
 # d)
 # Minimo
-print(f"Minimo: {salaries['Salario'].min()}")
+print(f"Minimo: {salaries_all['Salario'].min()}")
 
 # Maximo
-print(f"Maximo: {salaries['Salario'].max()}")
+print(f"Maximo: {salaries_all['Salario'].max()}")
 
 # Cuartiles
-print(f"Cuartiles: {salaries['Salario'].quantile([0.25,0.5,0.75])}")
+print(f"Cuartiles: {salaries_all['Salario'].quantile([0.25,0.5,0.75])}")
 
 ##############################################################################################################
 # e)
-Corte = 70000 # Seteamos un limite de $50000 en el monto del salario para que los datos sean mas legibles
+Corte = 70000 # Seteamos un limite de $70000 en el monto del salario para que los datos sean mas legibles
 salario_femenino = salaries[(salaries['Sexo'] == 2) & (salaries['Salario'] < Corte)]
 
 salario_masculino = salaries[(salaries['Sexo'] == 1) & (salaries['Salario'] < Corte)]

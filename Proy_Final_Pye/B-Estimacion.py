@@ -5,7 +5,6 @@
 # 2) Elabora intervalo de confianza con 95% de certeza para la variable desempleo.
 
 import pandas as pd
-import matplotlib.pyplot as plt
 import scipy.stats as st
 
 df= pd.read_csv('ECH_2022 - BD Proyecto Final PyE 2023.csv')
