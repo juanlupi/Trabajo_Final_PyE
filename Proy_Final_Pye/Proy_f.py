@@ -11,8 +11,8 @@ tasa_de_desempleo = poblacion_desempleada['ID'].count() / poblacion_economica_ac
 
 print (f"Tasa de desempleo {tasa_de_desempleo} ")
 
-#Parte 1 b)
-
+#############################################################################################################
+# b)
 # Calculamos la tasa de desempleo por rango de edad
 Rangos = [14,18,26,41]
 TasasPorRangos = {}
@@ -41,113 +41,90 @@ plt.ylabel('Tasa de desempleo')
 plt.title(f'Tasa de desempleo por rango de edad')
 plt.show()
 
-
+#############################################################################################################
 #Parte 2 a)
+#Seteamos un limite de $250000 en el monto del salario para que los datos sean mas legible
+Corte = 150000
+salaries = df[(df['Salario'] != 0) & (df['Salario'] < Corte)]
 
-# Gráficamos el histograma por rangos de edad
-# for i in range(0,Rangos.__len__()):
-
-#     salaries_by_age = df[(df['Salario'] != 0) & (df['Edad'] >= Rangos[i]) ]
-
-#     if i < Rangos.__len__() - 1:
-#         salaries_by_age = salaries_by_age[salaries_by_age['Edad'] < Rangos[i+1]]
-    
-#     salaries_list = salaries_by_age['Salario'].tolist()
-    
-#     # Create the histogram
-#     plt.hist(salaries_list)
-
-#     # Add labels and title
-#     if i == Rangos.__len__() - 1: 
-#         plt.title(f"Salary Histogram for ages {Rangos[i]} +")
-#     else:
-#         plt.title(f"Salary Histogram for ages {Rangos[i]} - {Rangos[i+1] - 1}")
-
-#     plt.xlabel("Salary")
-#     plt.ylabel('Frequency')
-
-#     # Display the histogram
-#     plt.show()
-
-#     # HACER BOXPLOT
-#     plt.boxplot(salaries_list)
-#     # Add labels and title
-#     if i == Rangos.__len__() - 1: 
-#         plt.title(f"BoxPlot for ages {Rangos[i]} +")
-#     else:
-#         plt.title(f"BoxPlot for ages {Rangos[i]} - {Rangos[i+1] - 1}")
-#     # show plot
-#     plt.show()
-
-salaries_range1 = df[(df['Salario'] != 0) & (df['Salario'] <= 50000)]
-salaries_range2 = df[(df['Salario'] != 0) & (df['Salario'] > 50000) & (df['Salario'] <= 100000)]
-salaries_range3 = df[(df['Salario'] != 0) & (df['Salario'] > 10000) & (df['Salario'] <= 150000)]
-salaries_range4 = df[(df['Salario'] != 0) & (df['Salario'] > 150000)]
+#Pasamos los datos a una lista para poder graficarlos
+salaries_list = salaries['Salario'].tolist()
 
 # Create the histogram
-plt.hist(salaries_range1)
+plt.hist(salaries_list)
 
-plt.title(f"Salary Histogram for ages {salaries_range1} +")
-plt.xlabel("Salary")
+# Add labels and title
+plt.xlabel('Salary')
 plt.ylabel('Frequency')
+plt.title('Salary Histogram')
 
+# Display the histogram
 plt.show()
 
-plt.hist(salaries_range2)
+#############################################################################################################
+# b)
+# HACER BOXPLOT
+plt.boxplot(salaries_list)
 
-plt.title(f"Salary Histogram for ages {salaries_range2} +")
-plt.xlabel("Salary")
-plt.ylabel('Frequency')
+plt.title('Salaries Boxplot')
 
+# show plot
 plt.show()
 
-plt.hist(salaries_range3)
+#############################################################################################################
+# c)
+# Mediana
+print(f"Mediana: {salaries['Salario'].median()}")
 
-plt.title(f"Salary Histogram for ages {salaries_range3} +")
-plt.xlabel("Salary")
-plt.ylabel('Frequency')
+# Media
+print(f"Media: {salaries['Salario'].mean()}")
 
+# Moda  
+print(f"Moda: {salaries['Salario'].mode()}")
+
+##############################################################################################################  
+# d)
+# Minimo
+print(f"Minimo: {salaries['Salario'].min()}")
+
+# Maximo
+print(f"Maximo: {salaries['Salario'].max()}")
+
+# Cuartiles
+print(f"Cuartiles: {salaries['Salario'].quantile([0.25,0.5,0.75])}")
+
+##############################################################################################################
+# e)
+Corte = 70000 # Seteamos un limite de $50000 en el monto del salario para que los datos sean mas legibles
+salario_femenino = salaries[(salaries['Sexo'] == 2) & (salaries['Salario'] < Corte)]
+
+salario_masculino = salaries[(salaries['Sexo'] == 1) & (salaries['Salario'] < Corte)]
+
+plt.boxplot(salario_masculino['Salario'].tolist()) # whis = 350
+plt.title('BoxPLot Salario Masculino')
 plt.show()
 
-plt.hist(salaries_range4)
+plt.boxplot(salario_femenino['Salario'].tolist())
+plt.title('BoxPLot Salario Femenino')
+plt.show()
 
-plt.title(f"Salary Histogram for ages {salaries_range4} +")
-plt.xlabel("Salary")
-plt.ylabel('Frequency')
+salario_Montevideo = salaries[(salaries['region'] == 1) & (salaries['Salario'] < Corte)]
 
+salario_Interior = salaries[(salaries['region'] != 1) & (salaries['Salario'] < Corte)]
+
+plt.boxplot(salario_Interior['Salario'].tolist()) # whis = 350
+plt.title('BoxPLot Salario Interior')
+plt.show()
+
+plt.boxplot(salario_Montevideo['Salario'].tolist())
+plt.title('BoxPLot Salario Montevideo')
 plt.show()
 
 
 
-# # # Mediana
-# # print(f"Mediana: {salaries_by_age['Salario'].median()}")
-
-# # # Media
-# # print(f"Media: {salaries_by_age['Salario'].mean()}")
-
-# # # Moda  
-# # print(f"Moda: {salaries_by_age['Salario'].mode()}")
-
-# # # Minimo
-# # print(f"Minimo: {salaries_by_age['Salario'].min()}")
-
-# # # Maximo
-# # print(f"Maximo: {salaries_by_age['Salario'].max()}")
-
-# # # Cuartiles
-# # print(f"Cuartiles: {salaries_by_age['Salario'].quantile([0.25,0.5,0.75])}")
 
 
 
 
 
 
-
-# salario_femenino = salaries[salaries['Sexo'] == 2]
-
-# salario_masculino = salaries[salaries['Sexo'] == 1]
-
-# plt.boxplot([salary < 500000 for salary in salario_femenino['Salario'].tolist()], whis=350)
-# # whis = 350
-
-# plt.show()
