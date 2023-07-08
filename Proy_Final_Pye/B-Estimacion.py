@@ -12,7 +12,7 @@ df= pd.read_csv('ECH_2022 - BD Proyecto Final PyE 2023.csv')
 PEA = 1757161
 
 # 1
-# VOlver a obtener la tasa de desempleo
+# Volver a obtener la tasa de desempleo
 poblacion_economica_activa = df[df['PEA'] != 0]
 poblacion_desempleada = poblacion_economica_activa[poblacion_economica_activa['Desempleo'] != 0]
 tasa_de_desempleo = poblacion_desempleada['ID'].count() / poblacion_economica_activa['ID'].count()
